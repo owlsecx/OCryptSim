@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-Safe, non-destructive ransomware chain emulation ║
+OCryptSim safely emulates ransomware-like behaviour chains inside an approved /tmp sandbox for purple-team and detection engineering. It is non-destructive by default (dry-run/monitor) and only writes reversible artefacts when explicitly allowed. Use it to exercise EDR, XDR, and SIEM detections without harming production data.
 
 ---
 
 ## ✨ Features
 
-- Sandboxed ransomware-behavior simulator for EDR/SIEM detection testing (dry-run, /tmp only)
+- Sandboxed ransomware-behaviour modules limited to an approved /tmp target
+- Dry-run/monitor mode by default; --execute required to write reversible artefacts
+- Selectable modules, speed controls, and capped file counts for safe drills
+- Auto-cleanup and report/log paths constrained under the sandbox
+- MITRE coverage export and detection-oriented reporting
+- Config save/load for repeatable incident-response exercises
 
 ---
 
@@ -38,7 +43,10 @@ Safe, non-destructive ransomware chain emulation ║
 ## 🚀 Usage
 
 ```bash
-./OCryptSim
+./OCryptSim --dry-run --module 1 --count 10
+./OCryptSim --target /tmp/ocryptsim_lab --execute --auto-cleanup
+./OCryptSim --mitre-export --report-dir /tmp/ocryptsim_lab/reports
+./OCryptSim --help
 ```
 
 ---
